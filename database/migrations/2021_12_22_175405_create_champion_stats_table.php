@@ -15,26 +15,27 @@ class CreateChampionStatsTable extends Migration
     {
         Schema::create('champion_stats', function (Blueprint $table) {
             $table->string('champion_id')->primary();
-            $table->float('attackrange', 6 , 3);
-            $table->float('movespeed', 6 , 3);
-            $table->float('hp', 6 , 3);
-            $table->float('hpperlevel', 6 , 3);
-            $table->float('mp', 6 , 3);
-            $table->float('mpperlevel', 6 , 3);
-            $table->float('hpregen', 6 , 3);
-            $table->float('hpregenperlevel', 6 , 3);
-            $table->float('mpregen', 6 , 3);
-            $table->float('mpregenperlevel', 6 , 3);
-            $table->float('armor', 6 , 3);
-            $table->float('armorperlevel', 6 , 3);
-            $table->float('spellblock', 6 , 3);
-            $table->float('spellblockperlevel', 6 , 3);
-            $table->float('attackdamage', 6 , 3);
-            $table->float('attackdamageperlevel', 6 , 3);
-            $table->float('attackspeed', 6 , 3);
-            $table->float('attackspeedperlevel', 6 , 3);
-            $table->float('crit', 6 , 3);
-            $table->float('critperlevel', 6 , 3);
+            $table->float('attackrange', 7 , 4);
+            $table->float('movespeed', 7 , 4);
+            $table->float('hp', 7 , 4);
+            $table->float('hpperlevel', 7 , 4);
+            $table->float('mp', 7 , 4);
+            $table->float('mpperlevel', 7 , 4);
+            $table->float('hpregen', 7 , 4);
+            $table->float('hpregenperlevel', 7 , 4);
+            $table->float('mpregen', 7 , 4);
+            $table->float('mpregenperlevel', 7 , 4);
+            $table->float('armor', 7 , 4);
+            $table->float('armorperlevel', 7 , 4);
+            $table->float('spellblock', 7 , 4);
+            $table->float('spellblockperlevel', 7 , 4);
+            $table->float('attackdamage', 7 , 4);
+            $table->float('attackdamageperlevel', 7 , 4);
+            $table->float('attackspeed', 7 , 4);
+            $table->float('attackspeedperlevel', 7 , 4);
+            $table->float('crit', 7 , 4);
+            $table->float('critperlevel', 7 , 4);
+            $table->timestamps();
 
             $table->foreign('champion_id')->references('id')->on('champions')
                 ->onUpdate('cascade')->onDelete('cascade');

@@ -18,6 +18,7 @@ class CreateTipsTable extends Migration
             $table->boolean('enemy')->default(0);// ally or enemy tip
             $table->string('champion_id');
             $table->text('description');
+            $table->timestamps();
 
             $table->foreign('champion_id')->references('id')->on('champions')
                 ->onUpdate('cascade')->onDelete('cascade');

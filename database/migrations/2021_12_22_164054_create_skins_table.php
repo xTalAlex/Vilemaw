@@ -19,6 +19,7 @@ class CreateSkinsTable extends Migration
             $table->string('champion_id');
             $table->string('name');
             $table->boolean('chromas');
+            $table->timestamps();
 
             $table->foreign('champion_id')->references('id')->on('champions')
                 ->onUpdate('cascade')->onDelete('cascade');

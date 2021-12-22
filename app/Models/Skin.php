@@ -11,6 +11,8 @@ class Skin extends Model
 
     public $incrementing = false;
 
+    protected $guarded=[];
+
     /**
      * Get the champion that owns the skin.
      */

@@ -9,6 +9,8 @@ class Tip extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     /**
      * Get the champion that owns the tip.
      */

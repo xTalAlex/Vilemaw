@@ -12,6 +12,10 @@ class Partype extends Model
     public $incrementing = false;
     protected $keyType = 'string';
 
+    public $timestamps = false;
+
+    protected $guarded = [];
+
     /**
      * Get the champions that owns the partype.
      */

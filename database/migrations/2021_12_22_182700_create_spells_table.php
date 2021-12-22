@@ -15,6 +15,7 @@ class CreateSpellsTable extends Migration
     {
         Schema::create('spells', function (Blueprint $table) {
             $table->string('id')->primary();
+            $table->string('champion_id');
             $table->char('key', 1);
             $table->string('name');
             $table->text('description');
@@ -29,10 +30,14 @@ class CreateSpellsTable extends Migration
             $table->string('costBurn');
             $table->string('rangeBurn');
             $table->json('effectBurn');
-            $table->json('leveltip');
+            $table->json('leveltip')->nullable();
             $table->json('vars');
             $table->json('datavalues');
             //datavalues never used
+            $table->timestamps();
+
+            $table->foreign('champion_id')->references('id')->on('champions')
+                ->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

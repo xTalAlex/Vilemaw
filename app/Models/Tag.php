@@ -12,6 +12,10 @@ class Tag extends Model
     public $incrementing = false;
     protected $keyType = 'string';
 
+    public $timestamps = false;
+
+    protected $guarded = [];
+
     /**
      * Get the champions for the tag.
      */

@@ -19,6 +19,7 @@ class CreatePassivesTable extends Migration
             $table->text('description');
             $table->string('image_full');
             $table->string('image_sprite');
+            $table->timestamps();
 
             $table->foreign('champion_id')->references('id')->on('champions')
                 ->onUpdate('cascade')->onDelete('cascade');

@@ -12,6 +12,8 @@ class ChampionStats extends Model
     public $incrementing = false;
     protected $keyType = 'string';
 
+    protected $guarded = [];
+
     /**
      * Get the champion that owns the stats.
      */

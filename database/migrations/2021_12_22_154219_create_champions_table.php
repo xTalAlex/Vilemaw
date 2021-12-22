@@ -20,16 +20,17 @@ class CreateChampionsTable extends Migration
             $table->string('title');
             $table->string('image_full');
             $table->string('image_sprite');
-            $table->string('blurb');
+            $table->text('blurb');
             $table->text('lore');
             $table->string('partype'); // model
             //start info
             $table->unsignedInteger('attack'); 
             $table->unsignedInteger('defense');
             $table->unsignedInteger('magic');
-            $table->unsignedInteger('diufficulty');
+            $table->unsignedInteger('difficulty');
             //end info
-            
+            $table->timestamps();
+
             $table->foreign('partype')->references('name')->on('partypes')
                 ->onUpdate('cascade')->onDelete('cascade');
         });
