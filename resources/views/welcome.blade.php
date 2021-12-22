@@ -15,7 +15,7 @@
         @endif
 
         <div class="max-w-6xl mx-auto text-center sm:px-6 lg:px-8">
-            <h1 class="text-5xl">VILEMAW</h1>
+            <h1 class="text-5xl"><a href="{{ route('dashboard') }}">VILEMAW</a></h1>
             <p class="mt-4">
                 <a href="https://developer.riotgames.com/docs/lol" target="_blank">Go to DOCS</a>
             </p>
