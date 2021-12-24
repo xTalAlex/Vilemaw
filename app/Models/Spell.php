@@ -24,7 +24,14 @@ class Spell extends Model
 
     public function cooldown()
     {
-        return $this->cooldownBurn;
+        $cooldowns = explode("/",$this->cooldownBurn);
+        if(count($cooldowns)===1){
+            $levels = $this->key==='r' ? 3 : 5;
+            for( $i=1 ; $i < $levels ; $i++ )
+                array_push($cooldowns, $cooldowns[0]);
+        }
+
+        return $cooldowns;
     }
 
     public function cost()

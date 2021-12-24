@@ -6,21 +6,21 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 use App\Models\ProfileIcon;
 
-class UpdateIcons extends Command
+class IconsParse extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'icon:update';
+    protected $signature = 'icons:parse';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Update all profile icons using the patch json file.';
+    protected $description = 'Parse all profile icons using the patch json file.';
 
     /**
      * Create a new command instance.
@@ -46,6 +46,7 @@ class UpdateIcons extends Command
         dump("Parsing profile icons for patch ".$profileicon->version." ...");
         $icons=$profileicon->data;
 
+        dump("  Updating ". collect($icons)->count() ." icons");
         foreach($icons as $icon){
             ProfileIcon::updateOrCreate([
                 'id'            => $icon->id

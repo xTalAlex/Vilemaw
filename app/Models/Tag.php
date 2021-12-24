@@ -21,7 +21,14 @@ class Tag extends Model
      */
     public function champions()
     {
-        return $this->belongsToMany(Champion::class);
+        return $this->belongsToMany(Champion::class,'champion_tag','tag_id','champion_id','name','id');
     }
 
+    /**
+     * Get the items for the tag.
+     */
+    public function items()
+    {
+        return $this->belongsToMany(Item::class,'item_tag','tag_id','item_id','name','id');
+    }
 }
