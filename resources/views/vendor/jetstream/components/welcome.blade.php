@@ -8,7 +8,7 @@
     </div>
 
     <div class="mt-6 text-gray-500">
-        Data to fetch: runesReforged.json, summoner.json
+        Data to fetch: summoner.json
     </div>
 </div>
 
