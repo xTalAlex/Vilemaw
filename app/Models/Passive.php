@@ -15,10 +15,14 @@ class Passive extends Model
     protected $guarded = [];
 
     /**
-     * Get the champion that owns the stats.
+     * Get the champion that owns the passive.
      */
     public function champion()
     {
         return $this->belongsTo(Champion::class);
+    }
+
+    public function getThumbImageAttribute(){
+        return '/img/passive/'.$this->image_full;
     }
 }

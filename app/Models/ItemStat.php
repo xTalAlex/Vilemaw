@@ -17,7 +17,7 @@ class ItemStat extends Model
     protected $guarded = [];
 
     /**
-     * Get the items for the stat.
+     * Get the items having the stat.
     */
     public function items()
     {

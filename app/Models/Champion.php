@@ -71,4 +71,20 @@ class Champion extends Model
     }
 
     // recommended
+
+    public function getThumbImageAttribute(){
+        return '/img/champion/'.$this->id.'.png';
+    }
+
+    public function getSplashImageAttribute(){
+        return '/img/champion/splash/'.$this->id.'_0.jpg';
+    }
+
+    public function getCenteredImageAttribute(){
+        return '/img/champion/centered/'.$this->id.'_0.jpg';
+    }
+
+    public function getLoadingImageAttribute(){
+        return '/img/champion/loading/'.$this->id.'_0.jpg';
+    }
 }

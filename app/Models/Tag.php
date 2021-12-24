@@ -17,7 +17,7 @@ class Tag extends Model
     protected $guarded = [];
 
     /**
-     * Get the champions for the tag.
+     * Get the champions having the tag.
      */
     public function champions()
     {
@@ -25,7 +25,7 @@ class Tag extends Model
     }
 
     /**
-     * Get the items for the tag.
+     * Get the items having the tag.
      */
     public function items()
     {

@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/champions', 'App\Http\Controllers\ChampionController@index')->name('champion.index');
+Route::get('/champions/{champion}', 'App\Http\Controllers\ChampionController@show')->name('champion.show');
 
 //middleware(['auth:sanctum', 'verified'])->
 Route::get('/dashboard', function () {

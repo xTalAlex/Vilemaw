@@ -48,4 +48,8 @@ class Spell extends Model
     {
         return $this->rangeBurn;
     }
+
+    public function getThumbImageAttribute(){
+        return '/img/spell/'.$this->image_full;
+    }
 }

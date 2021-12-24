@@ -12,7 +12,7 @@ class Tip extends Model
     protected $guarded = [];
 
     /**
-     * Get the champion that owns the tip.
+     * Get the champion that the tip is related to.
      */
     public function champion()
     {

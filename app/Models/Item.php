@@ -14,7 +14,7 @@ class Item extends Model
     protected $guarded = [];
 
     /**
-     * Get the maps for the item.
+     * Get the maps having the item.
      */
     public function maps()
     {

@@ -14,7 +14,26 @@ class ChampionController extends Controller
      */
     public function index()
     {
-        //
+        $champions = Champion::all()->sortBy('name');
+
+        $groups = $champions->reduce(function ($carry, $champion) {
+
+            // get first letter
+            $first_letter = $champion['name'][0];
+    
+            if ( !isset($carry[$first_letter]) ) {
+                $carry[$first_letter] = [];
+            }
+    
+            $carry[$first_letter][] = $champion;
+    
+            return $carry;
+    
+        }, []);
+
+        return view('champion.index',[
+           'champions_groups' => $groups,
+        ]);
     }
 
     /**
@@ -46,7 +65,7 @@ class ChampionController extends Controller
      */
     public function show(Champion $champion)
     {
-        //
+        return view('champion.show');
     }
 
     /**
