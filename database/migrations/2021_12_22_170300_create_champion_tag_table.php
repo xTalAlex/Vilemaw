@@ -14,7 +14,7 @@ class CreateChampionTagTable extends Migration
     public function up()
     {
         Schema::create('champion_tag', function (Blueprint $table) {
-            $table->string('champion_id');
+            $table->unsignedBigInteger('champion_id');
             $table->string('tag_id');
 
             $table->foreign('champion_id')->references('id')->on('champions')

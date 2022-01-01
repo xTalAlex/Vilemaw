@@ -12,4 +12,9 @@ class ProfileIcon extends Model
     public $incrementing = false;
 
     protected $guarded = [];
+
+    public function getImagePathAttribute()
+    {
+        return '/img/profileicon/'.$this->image;
+    }
 }

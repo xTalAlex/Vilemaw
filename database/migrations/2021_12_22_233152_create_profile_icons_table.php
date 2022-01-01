@@ -15,8 +15,7 @@ class CreateProfileIconsTable extends Migration
     {
         Schema::create('profile_icons', function (Blueprint $table) {
             $table->unsignedBigInteger('id')->primary();
-            $table->string('image_full');
-            $table->string('image_sprite');
+            $table->string('image');
             $table->timestamps();
         });
     }

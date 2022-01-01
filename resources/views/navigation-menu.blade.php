@@ -18,6 +18,15 @@
                     <x-jet-nav-link href="{{ route('champion.index') }}" :active="request()->routeIs('champion.index')">
                         {{ __('Champions') }}
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('item.index') }}" :active="request()->routeIs('item.index')">
+                        {{ __('Items') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('rune.index') }}" :active="request()->routeIs('rune.index')">
+                        {{ __('Runes') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('icon.index') }}" :active="request()->routeIs('icon.index')">
+                        {{ __('Icons') }}
+                    </x-jet-nav-link>
                 </div>
             </div>
 
@@ -148,6 +157,15 @@
             </x-jet-responsive-nav-link>
             <x-jet-responsive-nav-link href="{{ route('champion.index') }}" :active="request()->routeIs('champion.index')">
                 {{ __('Champions') }}
+            </x-jet-responsive-nav-link>
+            <x-jet-responsive-nav-link href="{{ route('item.index') }}" :active="request()->routeIs('item.index')">
+                {{ __('Items') }}
+            </x-jet-responsive-nav-link>
+            <x-jet-responsive-nav-link href="{{ route('rune.index') }}" :active="request()->routeIs('rune.index')">
+                {{ __('Runes') }}
+            </x-jet-responsive-nav-link>
+            <x-jet-responsive-nav-link href="{{ route('icon.index') }}" :active="request()->routeIs('icon.index')">
+                {{ __('Icons') }}
             </x-jet-responsive-nav-link>
         </div>
 

@@ -4,7 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
-use App\Models\{Item, ItemStat, Tag};
+use App\Models\{Champion, Item, ItemStat, Tag};
 
 class ItemsParse extends Command
 {
@@ -63,24 +63,19 @@ class ItemsParse extends Command
                 'id'            =>  $id,
             ],[
                 'name'          =>  $item->name,
-                'image_full'    =>  $item->image->full,
-                'image_sprite'  =>  $item->image->sprite,
+                'image'         =>  $item->image->full,
                 'gold_base'     =>  $item->gold->base,
                 'gold_total'    =>  $item->gold->total,
                 'gold_sell'     =>  $item->gold->sell,
                 'purchasable'   =>  $item->gold->purchasable,
-                'group'         =>  $item->group ?? null,
                 'description'   =>  $item->description,
                 'colloq'        =>  $item->colloq,
                 'plaintext'     =>  $item->plaintext,
-                'consumed'      =>  $item->consumed ?? null,
+                'consumable'    =>  $item->consumed ?? null,
                 'stacks'        =>  $item->stacks ?? 1,
-                'depth'         =>  $item->depth ?? null,
-                'consumeOnFull' =>  $item->consumeOnFull ?? null,
-                'inStore'       =>  $item->inStore ?? null,
-                'hideFromAll'   =>  $item->hideFromAll ?? null,
-                'required_champion' => $item->requiredChampion ?? null,
-                'required_ally'  =>  $item->requiredAlly ?? null,
+                'depth'         =>  $item->depth ?? 1,
+                'required_champion' => isset($item->requiredChampion) ? Champion::where('name',$item->requiredChampion)->first()->id : null,
+                'effect'        => json_encode($item->effect ?? null),
             ]);
 
             dump("  Updating stats");

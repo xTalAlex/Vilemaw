@@ -42,6 +42,34 @@ class Item extends Model
      */
     public function stats()
     {
-        return $this->belongsToMany(ItemStat::class,'item_item_stat','item_id','item_stat_id','id','name');
+        return $this->belongsToMany(ItemStat::class,'item_item_stat','item_id','item_stat_id','id','name')->withPivot('value');
+    }
+
+    /**
+     * Get the special recipe for the item.
+     */
+    public function specialRecipe()
+    {
+        return $this->belongsTo(Item::class,'special_recipe');
+    }
+
+    /**
+     * Get the required champion for the item.
+     */
+    public function requiredChampion()
+    {
+        return $this->belongsTo(Champion::class,'required_champion');
+    }
+
+    /**
+     * Get the item for the special recipe.
+     */
+    public function item()
+    {
+        return $this->hasOne(Item::class,'special_recipe');
+    }
+
+    public function getImagePathAttribute(){
+        return '/img/item/'. $this->image;
     }
 }

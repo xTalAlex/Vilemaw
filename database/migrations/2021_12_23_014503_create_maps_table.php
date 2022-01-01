@@ -16,8 +16,7 @@ class CreateMapsTable extends Migration
         Schema::create('maps', function (Blueprint $table) {
             $table->unsignedBigInteger('id')->primary();
             $table->string('name');
-            $table->string('image_full');
-            $table->string('image_sprite');
+            $table->string('image');
             $table->timestamps();
         });
     }

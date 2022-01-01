@@ -51,8 +51,7 @@ class IconsParse extends Command
             ProfileIcon::updateOrCreate([
                 'id'            => $icon->id
             ],[
-                'image_full'    => $icon->image->full,
-                'image_sprite'  => $icon->image->sprite,
+                'image'    => $icon->image->full,
             ]);
         }
 

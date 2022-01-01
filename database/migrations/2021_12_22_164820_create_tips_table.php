@@ -16,7 +16,7 @@ class CreateTipsTable extends Migration
         Schema::create('tips', function (Blueprint $table) {
             $table->id();
             $table->boolean('enemy')->default(0);// ally or enemy tip
-            $table->string('champion_id');
+            $table->unsignedBigInteger('champion_id');
             $table->text('description');
             $table->timestamps();
 

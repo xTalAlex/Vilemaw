@@ -54,15 +54,12 @@ class ChampionsParse extends Command
 
             dump("Updating ".$champion->name);
             $currentChamp=Champion::updateOrCreate([
-                'id'            => $champion->id,
+                'name'            => $champion->id,
             ],[
-                'key'           => $champion->key,
-                'name'          => $champion->name,
+                'id'           => $champion->key,
                 'title'         => $champion->title,
-                'image_full'    => $champion->image->full,
-                'image_sprite'  => $champion->image->sprite,
+                'image'    => $champion->image->full,
                 'lore'          => $champion->lore,
-                'blurb'         => $champion->blurb,
                 'partype'       => $partype->name,
                 'attack'        => $champion->info->attack,
                 'defense'       => $champion->info->defense,
@@ -140,8 +137,7 @@ class ChampionsParse extends Command
             $currentChamp->passive()->updateOrCreate([],[
                 'name'          => $passive->name,
                 'description'   => $passive->description,
-                'image_full'    => $passive->image->full,
-                'image_sprite'  => $passive->image->sprite,
+                'image'    => $passive->image->full,
             ]);
 
             $spells=$champion->spells;
@@ -156,11 +152,9 @@ class ChampionsParse extends Command
                     'key'           =>  $keys[$currKey],
                     'name'          =>  $spell->name,
                     'description'   =>  $spell->description,
-                    'image_full'    =>  $spell->image->full,
-                    'image_sprite'  =>  $spell->image->sprite,
+                    'image'    =>  $spell->image->full,
                     'tooltip'       =>  $spell->tooltip,
                     'maxrank'       =>  $spell->maxrank,
-                    'cost_type'     =>  $spell->costType,
                     'resource'      =>  $spell->resource ?? null,
                     'maxammo'       =>  $spell->maxammo,
                     'cooldownBurn'  =>  $spell->cooldownBurn,
@@ -169,7 +163,6 @@ class ChampionsParse extends Command
                     'effectBurn'    =>  json_encode($spell->effectBurn),
                     'leveltip'      =>  json_encode($spell->leveltip ?? null),
                     'vars'          =>  json_encode($spell->vars),
-                    'datavalues'    =>  json_encode($spell->datavalues),
                 ]);
                 $currKey++;
             }

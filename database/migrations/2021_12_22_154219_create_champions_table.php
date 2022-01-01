@@ -14,13 +14,10 @@ class CreateChampionsTable extends Migration
     public function up()
     {
         Schema::create('champions', function (Blueprint $table) {
-            $table->string('id')->primary();
-            $table->bigInteger('key')->unique();
+            $table->unsignedBigInteger('id')->primary();
             $table->string('name');
             $table->string('title');
-            $table->string('image_full');
-            $table->string('image_sprite');
-            $table->text('blurb');
+            $table->string('image');
             $table->text('lore');
             $table->string('partype'); // model
             //start info

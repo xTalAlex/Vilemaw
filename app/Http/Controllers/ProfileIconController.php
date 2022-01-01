@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Champion;
+use App\Models\ProfileIcon;
 use Illuminate\Http\Request;
 
-class ChampionController extends Controller
+class ProfileIconController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,25 +14,8 @@ class ChampionController extends Controller
      */
     public function index()
     {
-        $champions = Champion::all()->sortBy('name');
-
-        $groups = $champions->reduce(function ($carry, $champion) {
-
-            // get first letter
-            $first_letter = $champion['name'][0];
-    
-            if ( !isset($carry[$first_letter]) ) {
-                $carry[$first_letter] = [];
-            }
-    
-            $carry[$first_letter][] = $champion;
-    
-            return $carry;
-    
-        }, []);
-
-        return view('champion.index',[
-           'champions_groups' => $groups,
+        return view('icon.index', [
+            'icons' => ProfileIcon::paginate(96),
         ]);
     }
 
@@ -60,23 +43,21 @@ class ChampionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Champion  $champion
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Champion $champion)
+    public function show($id)
     {
-        return view('champion.show', [
-            'champion' => $champion
-        ]);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Champion  $champion
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Champion $champion)
+    public function edit($id)
     {
         //
     }
@@ -85,10 +66,10 @@ class ChampionController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Champion  $champion
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Champion $champion)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -96,10 +77,10 @@ class ChampionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Champion  $champion
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Champion $champion)
+    public function destroy($id)
     {
         //
     }

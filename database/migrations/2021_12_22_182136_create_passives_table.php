@@ -14,11 +14,10 @@ class CreatePassivesTable extends Migration
     public function up()
     {
         Schema::create('passives', function (Blueprint $table) {
-            $table->string('champion_id')->primary();
+            $table->unsignedBigInteger('champion_id')->primary();
             $table->string('name');
             $table->text('description');
-            $table->string('image_full');
-            $table->string('image_sprite');
+            $table->string('image');
             $table->timestamps();
 
             $table->foreign('champion_id')->references('id')->on('champions')

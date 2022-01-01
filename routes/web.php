@@ -18,6 +18,9 @@ Route::get('/', function () {
 });
 Route::get('/champions', 'App\Http\Controllers\ChampionController@index')->name('champion.index');
 Route::get('/champions/{champion}', 'App\Http\Controllers\ChampionController@show')->name('champion.show');
+Route::get('/items', 'App\Http\Controllers\ItemController@index')->name('item.index');
+Route::get('/runes', 'App\Http\Controllers\RuneController@index')->name('rune.index');
+Route::get('/icons', 'App\Http\Controllers\ProfileIconController@index')->name('icon.index');
 
 //middleware(['auth:sanctum', 'verified'])->
 Route::get('/dashboard', function () {

@@ -16,7 +16,7 @@ class CreateSkinsTable extends Migration
         Schema::create('skins', function (Blueprint $table) {
             $table->unsignedBigInteger('id')->primary();
             $table->unsignedBigInteger('num');
-            $table->string('champion_id');
+            $table->unsignedBigInteger('champion_id');
             $table->string('name');
             $table->boolean('chromas');
             $table->timestamps();

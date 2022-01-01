@@ -14,7 +14,7 @@ class CreateChampionStatsTable extends Migration
     public function up()
     {
         Schema::create('champion_stats', function (Blueprint $table) {
-            $table->string('champion_id')->primary();
+            $table->unsignedBigInteger('champion_id')->primary();
             $table->float('attackrange', 7 , 4);
             $table->float('movespeed', 7 , 4);
             $table->float('hp', 7 , 4);

@@ -52,8 +52,7 @@ class MapsParse extends Command
                 'id'            => $map->MapId
             ],[
                 'name'          => $map->MapName,
-                'image_full'    => $map->image->full,
-                'image_sprite'  => $map->image->sprite,
+                'image'    => $map->image->full,
             ]);
         }
         return 0;

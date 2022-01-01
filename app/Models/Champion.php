@@ -10,7 +10,6 @@ class Champion extends Model
     use HasFactory;
 
     public $incrementing = false;
-    protected $keyType = 'string';
 
     protected $guarded = [];
 
@@ -70,21 +69,33 @@ class Champion extends Model
         return $this->hasMany(Spell::class);
     }
 
+    /**
+     * Get items that require the champion.
+     */
+    public function items()
+    {
+        return $this->hasMany(Item::class,'required_champion');
+    }
+
     // recommended
 
     public function getThumbImageAttribute(){
-        return '/img/champion/'.$this->id.'.png';
+        return '/img/champion/'.$this->image;
     }
 
     public function getSplashImageAttribute(){
-        return '/img/champion/splash/'.$this->id.'_0.jpg';
+        return '/img/champion/splash/'.$this->name.'_0.jpg';
     }
 
     public function getCenteredImageAttribute(){
-        return '/img/champion/centered/'.$this->id.'_0.jpg';
+        return '/img/champion/centered/'.$this->name.'_0.jpg';
     }
 
     public function getLoadingImageAttribute(){
-        return '/img/champion/loading/'.$this->id.'_0.jpg';
+        return '/img/champion/loading/'.$this->name.'_0.jpg';
+    }
+
+    public function getBlurbAttribute(){
+        return substr($this->lore,0,199)."...";
     }
 }

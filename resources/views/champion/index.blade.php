@@ -15,22 +15,51 @@
                 </div>
                 @foreach($champions_groups as $letter=>$champions)
                     <h2 class="mt-12 mb-2 ml-2 text-xl font-bold underline uppercase" id="{{$letter}}">{{$letter}}</h2>
-                    <div class="grid grid-cols-6 gap-2 px-4 md:grid-cols-6">
+                    <div class="grid grid-cols-1 gap-2 px-4 md:grid-cols-3 lg:grid-cols-4">
                         @foreach($champions as $champion)
-                            <div class="flex flex-col items-center justify-start col-span-1 py-2 space-y-2 text-center border rounded-lg shadow cursor-pointer bg-orange-50">
-                                <p class="px-2 text-xs font-bold">{{ $champion->name }}</p>
+                            <div class="flex flex-col items-center justify-start col-span-1 py-2 m-2 space-y-2 text-center border rounded-lg shadow bg-orange-50">
+                                <p class="px-2 text-xs font-bold hover:opacity-80">
+                                    <a href="{{ route('champion.show',$champion) }}">{{ $champion->name }}</a>
+                                </p>
                                 <div class="relative w-16">
-                                    <img src="{{ $champion->loading_image }}" class="w-full border">
+                                    <x-tooltip>
+                                            <x-slot name="trigger">
+                                                <a href="{{ route('champion.show',$champion) }}">
+                                                    <img src="{{ $champion->loading_image }}" class="w-full border hover:opacity-80">
+                                                </a>
+                                            </x-slot>
+                                            <div class="space-y-2">
+                                                <p class="font-bold">{{ $champion->title }}</p>
+                                                <p>{{ $champion->blurb }}</p>
+                                            </div>
+                                        </x-tooltip>
                                     <div class="absolute border -bottom-1 -right-1">
-                                        <img class="w-6 h-6" src="{{ $champion->passive->thumb_image }}">
+                                        <x-tooltip>
+                                            <x-slot name="trigger">
+                                                <img class="w-6 h-6" src="{{ $champion->passive->thumb_image }}">
+                                            </x-slot>
+                                            <div class="space-y-2">
+                                                <p class="font-bold">{{ $champion->passive->name }}</p>
+                                                <p>{!! $champion->passive->description !!}</p>
+                                            </div>
+                                        </x-tooltip>
                                     </div>
                                 </div>
                                 <div class="inline-flex mx-auto space-x-0.5">
                                     @foreach($champion->spells as $spell)
-                                        <img class="w-6 h-6 border" src="{{ $spell->thumb_image }}">
+                                        <x-tooltip>
+                                            <x-slot name="trigger">   
+                                                <img class="w-6 h-6 border" src="{{ $spell->thumb_image }}">
+                                            </x-slot>
+                                            <div class="space-y-2">
+                                                <p class="font-bold">{{ $spell->name }}</p>
+                                                <p>{!! $spell->description !!}</p>
+                                                <hr>
+                                                <p>{!! $spell->tooltip !!}</p>
+                                            </div>
+                                        </x-tooltip>
                                     @endforeach
                                 </div>
-                                <p class="h-12 px-2 text-xs">{{ $champion->title }}</p>
                                 <div class="px-1 text-xs text-left">
                                     <p><span class="font-bold">Resource: </span>{{ $champion->partype }}<p>
                                     <p class="font-bold">
@@ -46,6 +75,19 @@
                                             <span class="px-1 py-0.5 border rounded-lg">{{ $tag->name }} </span>
                                         @endforeach
                                     </p>
+                                    <div class="py-2 text-xs space-y-0.5">
+                                        <p>Range - {{ $champion->stats->attackrange }}</p>
+                                        <p>Movement - {{ $champion->stats->movespeed }}</p>
+                                        <p>HP - {{ $champion->stats->hp }} (+{{ $champion->stats->hpperlevel }})</p>
+                                        <p>MP - {{ $champion->stats->mp }} (+{{ $champion->stats->hpperlevel }})</p>
+                                        <p>HPreg - {{ $champion->stats->hpregen }} (+{{ $champion->stats->hpregenperlevel }})</p>
+                                        <p>MPreg - {{ $champion->stats->mpregen }} (+{{ $champion->stats->mpregenperlevel }})</p>
+                                        <p>Armor - {{ $champion->stats->armor }} (+{{ $champion->stats->armorperlevel }})</p>
+                                        <p>MagicRes - {{ $champion->stats->spellblock }} (+{{ $champion->stats->spellblockperlevel }})</p>
+                                        <p>Damage - {{ $champion->stats->attackdamage }} (+{{ $champion->stats->attackdamageperlevel }})</p>
+                                        <p>AttackSpeed - {{ $champion->stats->attackspeed }} (+{{ $champion->stats->attackspeedperlevel }})</p>
+                                        <p>Crit - {{ $champion->stats->crit }} (+{{ $champion->stats->critperlevel }})</p>
+                                    </div>
                                 </div>
                             </div>
                         @endforeach

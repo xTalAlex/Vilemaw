@@ -16,9 +16,7 @@ class CreateItemsTable extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->unsignedBigInteger('id')->primary();
             $table->string('name');
-            $table->string('image_full');
-            $table->string('image_sprite');
-            $table->string('group')->nullable();
+            $table->string('image');
             $table->text('description');
             $table->string('colloq');
             $table->string('plaintext');
@@ -29,12 +27,8 @@ class CreateItemsTable extends Migration
             $table->boolean('purchasable');
             //end gold
             $table->unsignedInteger('stacks')->default(1);
-            $table->boolean('inStore')->nullable();//->default(true);
-            $table->string('required_champion')->nullable();
-            $table->string('required_ally')->nullable();
-            $table->boolean('hideFromAll')->nullable();
-            $table->boolean('consumed')->nullable();
-            $table->boolean('consumeOnFull')->nullable();
+            $table->unsignedBigInteger('required_champion')->nullable();
+            $table->boolean('consumable')->nullable();
             $table->unsignedInteger('depth')->nullable();
             $table->json('effect')->nullable();
             //start rune
@@ -42,8 +36,6 @@ class CreateItemsTable extends Migration
             $table->timestamps();
 
             $table->foreign('required_champion')->references('id')->on('champions')
-                ->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('required_ally')->references('id')->on('champions')
                 ->onUpdate('cascade')->onDelete('cascade');
         });
 

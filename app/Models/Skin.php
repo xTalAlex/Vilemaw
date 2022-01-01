@@ -20,4 +20,8 @@ class Skin extends Model
     {
         return $this->belongsTo(Champion::class);
     }
+
+    public function getSplashImageAttribute(){
+        return '/img/champion/splash/'.$this->champion->name.'_'.$this->num.'.jpg';
+    }
 }

@@ -50,6 +50,6 @@ class Spell extends Model
     }
 
     public function getThumbImageAttribute(){
-        return '/img/spell/'.$this->image_full;
+        return '/img/spell/'.$this->image;
     }
 }

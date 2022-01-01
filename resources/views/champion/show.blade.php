@@ -1,39 +1,50 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="text-xl font-semibold leading-tight text-gray-800">
-            {{ __('Champions') }}
-        </h2>
+        <div class="inline-flex">
+            <img src="{{ $champion->thumb_image }}" class="w-16">
+            <div class="ml-2">
+                <h2 class="text-xl font-semibold leading-tight text-gray-800">
+                    {{ $champion->name }}
+                </h2>
+                <h3 class="text-gray-700">{{ $champion->title }}</h3>
+            </div>
+        </div>
     </x-slot>
 
     <div class="py-12">
         <div class="max-w-5xl mx-auto sm:px-6 lg:px-8">
             <div class="min-w-full overflow-hidden bg-white shadow-xl sm:rounded-lg">
-                <div class="w-full space-x-1">
-                    @foreach (range('A', 'Z') as $char)
-                        <a href="#{{$char}}" class="font-bold underline uppercase hover:no-underline hover:opacity-50">{{$char}}</a>
+                <div class="p-2">
+                    {{ $champion->lore }}
+                </div>
+                
+                @if($champion->skins()->count())
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                    @foreach($champion->skins as $skin)
+                    <div class="relative col-span-1"
+                        x-data="{ visible:false }"
+                        x-on:mouseenter="visible=true"
+                        x-on:mouseleave="visible=false"
+                    >
+                        <a class="group" href="{{ $skin->splash_image }}">
+                            <h4 class="capitalize z-10 absolute px-2 py-0.5 rounded bg-opacity-80 font-bold text-white bg-gray-800 bottom-1 left-1"
+                                x-cloak
+                                x-show="visible"
+                            >
+                                <span class="inline-flex items-center">
+                                    {{ $skin->name }}
+                                    @if($skin->chromas)
+                                    <img class="w-4 ml-1" src="https://upload.wikimedia.org/wikipedia/commons/c/c5/Colorwheel.svg">
+                                    @endif
+                                </span>
+                            </h4>
+                            <img class="group-hover:opacity-80" src="{{ $skin->splash_image }}"> 
+                        </a>
+                    </div>
                     @endforeach
                 </div>
-                @foreach($champions_groups as $letter=>$champions)
-                    <h2 class="mt-2 ml-2 text-xl font-bold underline uppercase" id="{{$letter}}">{{$letter}}</h2>
-                    <div class="grid grid-cols-6 gap-1 px-1 md:grid-cols-8">
-                        @foreach($champions as $champion)
-                            <div class="flex flex-col items-center justify-start col-span-1 py-2 space-y-2 text-center border rounded-lg shadow cursor-pointer bg-zinc-400">
-                                <p class="px-2 text-xs font-bold">{{ $champion->name }}</p>
-                                <img src="{{ $champion->loading_image }}" class="w-16">
-                                <p class="h-12 px-2 text-xs">{{ $champion->title }}</p>
-                                <div class="text-xs text-left">
-                                    <p><span class="font-bold">Resource: </span>{{ $champion->partype }}<p>
-                                    <p>
-                                        {{ $champion->attack }}<span class="font-bold">atk</span>
-                                        {{ $champion->defense }}<span class="font-bold">def</span>
-                                        {{ $champion->magic }}<span class="font-bold">mag</span>
-                                        {{ $champion->difficulty }}<span class="font-bold"> difficulty</span>
-                                    <p>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                @endforeach
+                @endif
+
             </div>
         </div>
     </div>

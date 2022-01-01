@@ -21,6 +21,6 @@ class ItemStat extends Model
     */
     public function items()
     {
-        return $this->belongsToMany(Item::class,'item_item_stat','tag_id','item_id','name','id');
+        return $this->belongsToMany(Item::class,'item_item_stat','tag_id','item_id','name','id')->withPivot('value');
     }
 }

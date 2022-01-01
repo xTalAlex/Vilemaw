@@ -23,6 +23,6 @@ class Passive extends Model
     }
 
     public function getThumbImageAttribute(){
-        return '/img/passive/'.$this->image_full;
+        return '/img/passive/'.$this->image;
     }
 }

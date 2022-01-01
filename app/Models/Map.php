@@ -20,4 +20,8 @@ class Map extends Model
     {
         return $this->belongsToMany(Item::class);
     }
+
+    public function getImagePathAttribute(){
+        return '/img/map/'.$this->image;
+    }
 }

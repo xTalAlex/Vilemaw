@@ -15,15 +15,13 @@ class CreateSpellsTable extends Migration
     {
         Schema::create('spells', function (Blueprint $table) {
             $table->string('id')->primary();
-            $table->string('champion_id');
+            $table->unsignedBigInteger('champion_id');
             $table->char('key', 1);
             $table->string('name');
             $table->text('description');
-            $table->string('image_full');
-            $table->string('image_sprite');
+            $table->string('image');
             $table->text('tooltip');
             $table->unsignedInteger('maxrank');
-            $table->string('cost_type')->nullable();
             $table->string('resource')->nullable();
             $table->integer('maxammo');
             $table->string('cooldownBurn');
@@ -32,7 +30,6 @@ class CreateSpellsTable extends Migration
             $table->json('effectBurn');
             $table->json('leveltip')->nullable();
             $table->json('vars');
-            $table->json('datavalues');
             //datavalues never used
             $table->timestamps();
 
