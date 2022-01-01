@@ -62,31 +62,26 @@
                                 </div>
                                 <div class="px-1 text-xs text-left">
                                     <p><span class="font-bold">Resource: </span>{{ $champion->partype }}<p>
-                                    <p class="font-bold">
-                                        {{ $champion->attack }}<span class="font-bold">Atk</span>
-                                        {{ $champion->defense }}<span class="font-bold">Def</span>
-                                        {{ $champion->magic }}<span class="font-bold">Mag</span>                                   
-                                    </p>
-                                    <p>
-                                        <span class="font-bold">Difficulty </span>{{ $champion->difficulty }}
-                                    </p>
                                     <p class="mt-2 space-x-2 text-xs">
                                         @foreach($champion->tags as $tag)
                                             <span class="px-1 py-0.5 border rounded-lg">{{ $tag->name }} </span>
                                         @endforeach
                                     </p>
-                                    <div class="py-2 text-xs space-y-0.5">
-                                        <p>Range - {{ $champion->stats->attackrange }}</p>
-                                        <p>Movement - {{ $champion->stats->movespeed }}</p>
-                                        <p>HP - {{ $champion->stats->hp }} (+{{ $champion->stats->hpperlevel }})</p>
-                                        <p>MP - {{ $champion->stats->mp }} (+{{ $champion->stats->hpperlevel }})</p>
-                                        <p>HPreg - {{ $champion->stats->hpregen }} (+{{ $champion->stats->hpregenperlevel }})</p>
-                                        <p>MPreg - {{ $champion->stats->mpregen }} (+{{ $champion->stats->mpregenperlevel }})</p>
-                                        <p>Armor - {{ $champion->stats->armor }} (+{{ $champion->stats->armorperlevel }})</p>
-                                        <p>MagicRes - {{ $champion->stats->spellblock }} (+{{ $champion->stats->spellblockperlevel }})</p>
-                                        <p>Damage - {{ $champion->stats->attackdamage }} (+{{ $champion->stats->attackdamageperlevel }})</p>
-                                        <p>AttackSpeed - {{ $champion->stats->attackspeed }} (+{{ $champion->stats->attackspeedperlevel }})</p>
-                                        <p>Crit - {{ $champion->stats->crit }} (+{{ $champion->stats->critperlevel }})</p>
+                                    <div class="px-4 mt-4 text-xs space-y-0.5">
+                                    
+                                        <p class="font-bold">Ally Tips</p>
+                                        <ul class="list-disc">
+                                        @foreach($champion->tips()->ally()->get() as $tip)
+                                            <li>{{ $tip->description }}</li>
+                                        @endforeach
+                                        </ul>
+
+                                        <p class="font-bold">Enemy Tips</p>
+                                        <ul class="list-disc">
+                                        @foreach($champion->tips()->enemy()->get() as $tip)
+                                            <li>{{ $tip->description }}</li>
+                                        @endforeach
+                                        </ul>
                                     </div>
                                 </div>
                             </div>

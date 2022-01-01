@@ -14,6 +14,34 @@
     <div class="py-12">
         <div class="max-w-5xl mx-auto sm:px-6 lg:px-8">
             <div class="min-w-full overflow-hidden bg-white shadow-xl sm:rounded-lg">
+
+                <div class="flex justify-between px-4">
+                    <div class="py-2 text-xs space-y-0.5">
+                        <p>Range - {{ $champion->stats->attackrange }}</p>
+                        <p>Movement - {{ $champion->stats->movespeed }}</p>
+                        <p>HP - {{ $champion->stats->hp }} (+{{ $champion->stats->hpperlevel }})</p>
+                        <p>MP - {{ $champion->stats->mp }} (+{{ $champion->stats->hpperlevel }})</p>
+                        <p>HPreg - {{ $champion->stats->hpregen }} (+{{ $champion->stats->hpregenperlevel }})</p>
+                        <p>MPreg - {{ $champion->stats->mpregen }} (+{{ $champion->stats->mpregenperlevel }})</p>
+                        <p>Armor - {{ $champion->stats->armor }} (+{{ $champion->stats->armorperlevel }})</p>
+                        <p>MagicRes - {{ $champion->stats->spellblock }} (+{{ $champion->stats->spellblockperlevel }})</p>
+                        <p>Damage - {{ $champion->stats->attackdamage }} (+{{ $champion->stats->attackdamageperlevel }})</p>
+                        <p>AttackSpeed - {{ $champion->stats->attackspeed }} (+{{ $champion->stats->attackspeedperlevel }})</p>
+                        <p>Crit - {{ $champion->stats->crit }} (+{{ $champion->stats->critperlevel }})</p>
+                    </div>
+
+                    <div>
+                        <p class="">
+                            {{ $champion->attack }}<span class="font-bold"> Atk</span>
+                            {{ $champion->defense }}<span class="font-bold"> Def</span>
+                            {{ $champion->magic }}<span class="font-bold"> Mag</span>                                   
+                        </p>
+                        <p>
+                            <span class="font-bold">Difficulty </span>{{ $champion->difficulty }}
+                        </p>
+                    </div>
+                </div>
+
                 <div class="p-2">
                     {{ $champion->lore }}
                 </div>
