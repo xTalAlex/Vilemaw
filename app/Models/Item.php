@@ -13,6 +13,13 @@ class Item extends Model
 
     protected $guarded = [];
 
+    public function scopeRift($query)
+    {
+        return $query->whereHas('maps', fn ($query) => 
+                    $query->where('name', 'Summoner\'s Rift')
+                );
+    }
+
     /**
      * Get the maps having the item.
      */

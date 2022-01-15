@@ -17,9 +17,11 @@
         <div class="max-w-6xl mx-auto text-center sm:px-6 lg:px-8">
             <h1 class="text-5xl"><a href="{{ route('dashboard') }}">VILEMAW</a></h1>
 
+            @if(\App\Models\Map::count())
             <div class="inline-flex mt-4">
                 <img class="w-32 border-2 shadow-xl" src="{{ \App\Models\Map::inRandomorder()->first()->image_path }}">
             </div>
+            @endif
 
             <p class="mt-4">
                 <a href="https://developer.riotgames.com/docs/lol" target="_blank">Go to DOCS</a>

@@ -14,7 +14,7 @@ class ItemController extends Controller
      */
     public function index()
     {
-        $items = Item::all()->sortBy('name');
+        $items = Item::rift()->get()->sortBy(['depth','name']);
 
         $groups = $items->reduce(function ($carry, $item) {
 
@@ -32,7 +32,7 @@ class ItemController extends Controller
         }, []);
 
         return view('item.index',[
-           'items_groups' => $groups,
+           'items_groups' => $groups
         ]);
     }
 
